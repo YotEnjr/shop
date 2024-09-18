@@ -1,3 +1,13 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 
-# Create your views here.
+# homepage/views.py
+from django.http import HttpResponse
+
+# Главная страница.
+
+
+def index(request):
+    return HttpResponse('Главная страница')
+
+# def index(request):
+#    return render(request, 'homepage/index.html', {})
