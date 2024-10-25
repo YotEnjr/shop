@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+<title> Главная страница </title>
+{% endblock %}
+
+{% block content %}
+  <!-- Тут код страницы -->
+  <h1>что-то</h1>
+  <ul>
+    
+   <li> <a href="{% url 'homepage:catalog' %}">вещи</a></li>
+   <li>большие вещи</li>
+   <li>маленькие вещи</li>
+   <li>вещ на голову</li>
+   <li>вещи разные</li>
+  </ul>
+  <h1> CAT</h1>
+  <img src="{% static 'img/cat.jpeg' %}" alt="photo">
+{% endblock %}
