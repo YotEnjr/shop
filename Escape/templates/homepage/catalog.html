@@ -4,5 +4,11 @@
 <title> Каталог одежды </title>
 {% endblock %}
 {% block content %}
-<h1> крутая футболка</h1>
+{% for product in product_list %}
+<ul>
+    <li>{{product.id}}</li>
+    <li>{{product.title}}</li>
+    <li><h2>{{product.price}}</h2></li>
+</ul>
+{% endfor %}
 {% endblock %}

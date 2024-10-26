@@ -1,20 +1,25 @@
 from django.shortcuts import render
-
-# homepage/views.py
-#from django.http import HttpResponse
-
-# Главная страница.
-
-
-#def index(request):
-#   return HttpResponse('Главная страница')
-
+from homepage.models import Categories, Products
 
 def index(request):
-    return render(request, 'homepage/index.html', {})
+    template_name = 'homepage/index.html'
+    # Запрос:
+    category_list = Categories.objects.all()
+    # Полученный из БД QuerySet передаём в словарь контекста:
+    context = {
+        'category_list': category_list,
+    }
+    # Словарь контекста передаём в шаблон, рендерим HTML-страницу:
+    return render(request, template_name, context) 
 
 def catalog(request):
-    return render(request, 'homepage/catalog.html', {})
+    template_name = 'homepage/catalog.html'
+    # Возьмём нужное. А ненужное не возьмём:
+    product_list = Products.objects.values('id', 'title', 'price')
+    context = {
+        'product_list': product_list,
+    }
+    return render(request, template_name, context) 
 
 #Будет еще одна вьюв функция для вызова странички отдельного товара как по арктиклю
 """
