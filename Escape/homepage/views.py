@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from homepage.models import Categories, Products
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
     template_name = 'homepage/index.html'
@@ -12,6 +14,8 @@ def index(request):
     # Словарь контекста передаём в шаблон, рендерим HTML-страницу:
     return render(request, template_name, context) 
 
+
+@login_required
 def catalog(request):
     template_name = 'homepage/catalog.html'
     # Возьмём нужное. А ненужное не возьмём:
@@ -20,6 +24,7 @@ def catalog(request):
         'product_list': product_list,
     }
     return render(request, template_name, context) 
+
 
 #Будет еще одна вьюв функция для вызова странички отдельного товара как по арктиклю
 """
