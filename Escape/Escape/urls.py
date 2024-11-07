@@ -24,6 +24,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('userpage/', include('userpage.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('snake/', include('snake.urls')),
 ]
 
 # Если проект запущен в режиме разработки...
