@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from homepage.models import Categories, Products
 from django.contrib.auth.decorators import login_required
+from cart.forms import CartAddProductForm
 
 
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
         'category_list': category_list,
     }
     # Словарь контекста передаём в шаблон, рендерим HTML-страницу:
-    return render(request, template_name, context) 
+    return render(request, template_name, context)
 
 
 @login_required
@@ -23,10 +24,21 @@ def catalog(request):
     context = {
         'product_list': product_list,
     }
-    return render(request, template_name, context) 
+    return render(request, template_name, context)
 
 
-#Будет еще одна вьюв функция для вызова странички отдельного товара как по арктиклю
+def product_detail(request, id, slug):
+    product = get_object_or_404(Products,
+                                id=id,
+                                slug=slug,
+                                available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request, 'shop/product/detail.html',
+                  {'product': product,
+                   'cart_product_form': cart_product_form})
+
+
+# Будет еще одна вьюв функция для вызова странички отдельного товара как по арктиклю
 """
 def vesch(request, pk):
     context={'id':pk}
