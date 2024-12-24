@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <a href="main.html" class="close-button">
+        <a href="{% static 'homepage:main' %}" class="close-button">
             <img src="{% static 'images/image 31.svg' %}" alt="крестик" class="">
         </a>
         <h1>Доставка</h1>
@@ -14,8 +14,5 @@
         <p>После оплаты, заказ отправляется на изготовление, далее отправляется к вам.</p>
         <p>Как правило, отправка заказов осуществляется в течение 3-7 дней.</p>
         <p>Трек-номер отслеживания доставки, чеки и вся информация придет на ваш E-mail после оформления заказа.</p>
-        <div class="footer">
-            <p>2024, &copy; Escape, Связь-Связь-Связь</p>
-        </div>
     </div>
 {% endblock %}

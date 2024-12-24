@@ -2,7 +2,7 @@
 {% block title %}
     <title>ESCAPE | Товар</title>
     <link rel="stylesheet" href="{% static 'style/product.css' %}">
-    <script src="{% static 'src/script.js' %}" defer></script> <!-- Подключение внешнего скрипта -->
+    <script src="{% static 'src/script2.js' %}" defer></script><!-- Подключение внешнего скрипта -->
 {% endblock %}
 <body>
     <header class="header">
@@ -17,15 +17,15 @@
                 <button class="image-nav left">
                     <img src="{% static 'images/arrow_left.svg' %}" alt="стрелка влево ">
                 </button>
-                <img src="" alt="" class="product-image">
+                <img src="{% static product.path_to_product %}" alt="логотип на футболке" class="card__image">
                 <button class="image-nav right">
                     <img src="{% static 'images/arrow_right.svg' %}" alt="стрелка вправо">
                 </button>
             </div>
             <div class="product-details">
-                <h1 class="product-name"></h1>
-                <p class="product-price"></p>
-                <p class="product-description"></p>
+                <h1 class="product-name">{{ product.title }}</h1>
+                <p class="product-price">{{ product.price }}</p>
+                <p class="product-description">{{ product.info }}</p>
                 <div class="sizes">
                     <button class="size-btn">XS</button>
                     <button class="size-btn">S</button>
@@ -37,7 +37,7 @@
                 <div class="product-details-list">
                     <button class="details-item">информация о товаре <span>+</span></button>
                     <div class="details-content hidden">
-                        <p>Состав: 100% хлопок<br>Плотность: 240 г<br>Принт: шелкография</p>
+                        <p>{{ product.info }}</p>
                     </div>
                 
                     <button class="details-item">таблица размеров <span>+</span></button>
@@ -64,22 +64,36 @@
         <div class="cart-modal-content">
             <button class="close-modal">×</button>
             <h2 class="cart-title">Корзина</h2>
+            {% for item in cart %}
+            {% with product=item.product %}
             <ul class="cart-items">
                 <li class="cart-item">
-                    <img src="" alt="Футболка" class="cart-item-image">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="
+                            {% if product.path_to_image %}
+                                {% static product.path_to_image %}
+                            {% else %}
+                                {% static "images/cart.svg" %}
+                            {% endif %}">
+                    </a>
                     <div class="cart-item-info">
-                        <p class="cart-item-name">ESCAPE VYCORS</p>
-                        <p class="cart-item-size">Размер: S</p>
+                        <p class="cart-item-name">{{ product.title }}</p>
+                        <p class="cart-item-size">Размер: {{ product.size }}</p>
                         <div class="cart-item-quantity">
                             <button class="quantity-decrease">-</button>
-                            <span class="quantity-value">1</span>
+                            <span class="quantity-value">{{ item.quantity }}</span>
                             <button class="quantity-increase">+</button>
                         </div>
-                        <p class="cart-item-price">3400 RUB</p>
+                        <p class="cart-item-price">{{ item.price }}</p>
+                        <p class="cart-item-price">{{ item.total_price }}</p>
+                        
                     </div>
                 </li>
             </ul>
-            <p class="cart-total">Сумма: <span>3400 RUB</span></p>
+            <a href="{% url "cart:cart_remove" product.id %}">Remove</a>
+            {% endwith %}
+        {% endfor %}
+            <p class="cart-total">Сумма: <span>{{ cart.get_total_price }}</span></p>
             <button class="checkout-btn">Оформить заказ</button>
         </div>
     </div>

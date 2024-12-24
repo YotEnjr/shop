@@ -14,28 +14,11 @@
             <button class="nav-btn">Предметы</button>
         </nav>
         <div class="gallery">
-            {% for post in post_list %} 
-                    <a href="{% url 'homepage:product' product.id%}" class="gallery__item">
-                        <img src="./images/эскейп.png" alt="логотип на футболке" class="card__image">
+            {% for product in product_list %} 
+                    <a href="{% url 'homepage:product_detail' product.id %}" class="gallery__item">
+                        <img src="{% static product.path_to_product %}" alt="логотип на футболке" class="card__image">
                     </a>  
             {% endfor %}
-            <!-- У каждой карточки теперь уникальный id, передаваемый через URL -->
-
-            <a href="product.html?id=2" class="gallery__item">
-                <img src="./images/words.png" alt="принт со словами" class="card__image">
-            </a>
-            <a href="product.html?id=3" class="gallery__item">
-                <img src="./images/it`s okay.png" alt="итс окей" class="card__image">
-            </a>
-            <a href="product.html?id=4" class="gallery__item">
-                <img src="./images/human.png" alt="хьюмен" class="card__image">
-            </a>
-            <a href="product.html?id=5" class="gallery__item">
-                <img src="./images/штрих.png" alt="логотив со штрихкодом" class="card__image">
-            </a>
-            <a href="product.html?id=6" class="gallery__item">
-                <img src="./images/вер из май маинд.png" alt="принт вер из май маинд" class="card__image">
-            </a>
         </div>
     </main>
     <script src="{% static 'src/script.js' %}"></script>

@@ -6,34 +6,27 @@ from cart.forms import CartAddProductForm
 
 def index(request):
     template_name = 'homepage/index.html'
-    # Запрос:
-    category_list = Categories.objects.all()
     # Полученный из БД QuerySet передаём в словарь контекста:
-    context = {
-        'category_list': category_list,
-    }
     # Словарь контекста передаём в шаблон, рендерим HTML-страницу:
-    return render(request, template_name, context)
+    return render(request, template_name, {})
 
 
 
 def main(request):
     template_name = 'homepage/main.html'
     # Возьмём нужное. А ненужное не возьмём:
-    product_list = Products.objects.values('id', 'title', 'price')
+    product_list = Products.objects.all().filter(is_published=True)
     context = {
         'product_list': product_list,
     }
     return render(request, template_name, context)
 
 @login_required
-def product_detail(request, id, slug):
+def product_detail(request, id):
     product = get_object_or_404(Products,
-                                id=id,
-                                slug=slug,
-                                available=True)
+                                id=id)
     cart_product_form = CartAddProductForm()
-    return render(request, 'cart/detail.html',
+    return render(request, 'homepage/product.html',
                   {'product': product,
                    'cart_product_form': cart_product_form})
 
