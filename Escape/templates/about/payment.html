@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Условия оплаты</title>
+<link rel="stylesheet" href="{% static 'style/oder.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <a href="{% url 'homepage:main' %}" class="close-button">
+            <img src="{% static 'images/image 31.svg' %}" alt="крестик" class="">
+        </a>
+        <h1>Условия оплаты</h1>
+        <p>Оплата товаров происходит только через сайт <strong>escape.store</strong>.</p>
+        <p>Выберите понравившиеся товары, после необходимо заполнить форму с вашими данными.</p>
+        <p>После заполнения данных, откроется страница оплаты, требуется ввести реквизиты вашей банковской карты либо воспользоваться "SberPay".</p>
+    </div>
+{% endblock %}
+

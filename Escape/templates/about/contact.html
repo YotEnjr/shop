@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+<title>Контакты</title>
+<link rel="stylesheet" href="{% static 'style/contact.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <a href="{% url 'homepage:main' %}" class="close-button">
+            <img src="{% static 'images/image 31.svg' %}" alt="крестик" class="">
+        </a>
+        <h1>Контакты</h1>
+        <p><strong>ПОЧТА ПОДДЕРЖКИ:</strong> timoti12321@gmail.com</p>
+        <div class="info-block">
+            <p><strong>ИП:</strong> ----------------------</p>
+            <p><strong>ИНН:</strong> --------------------</p>
+            <p><strong>ОГРН:</strong> -------------------</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,4 +1,27 @@
 {% load static %}
-<footer class="border-top text-center py-3">
-    <p>© Escape</p>    
-  </footer>
+<footer class="footer">
+    <div class="footer__menu">
+        <ul class="footer__list">
+            <li class="footer__item"><a href="{% url 'about:about' %}" class="footer__link">О компании</a></li>
+            <li class="footer__item"><a href="{% url 'homepage:main' %}" class="footer__link">Каталог</a></li>
+        </ul>
+        <ul class="footer__list">
+            <li class="footer__item"><a href="{% url 'about:contact' %}" class="footer__link">Контакты</a></li>
+            <li class="footer__item"><a href="{% url 'about:contact' %}" class="footer__link">Поддержка</a></li>
+        </ul>
+        <ul class="footer__list">
+            <li class="footer__item"><a href="{% url 'about:payment' %}" class="footer__link">Условия оплаты</a></li>
+            <li class="footer__item"><a href="{% url 'about:payment' %}" class="footer__link">Обмен и возврат</a></li>
+            <li class="footer__item"><a href="{% url 'about:deliver' %}" class="footer__link">Доставка</a></li>
+        </ul>
+        <ul class="footer__list">
+            <li class="footer__item"><a href="#" class="footer__link">Заказать звонок</a></li>
+            <li class="footer__item"><a href="https://www.google.com/maps/place/%D0%9A%D0%B5%D0%BD%D0%B3%D1%83%D1%80%D1%83/@57.4367,41.1637062,992m/data=!3m1!1e3!4m15!1m8!3m7!1s0x414d57e63e262cf1:0x2c0a6c83a7acd464!2z0JLQvtC70LPQvtGA0LXRh9C10L3RgdC6LCDQmtC-0YHRgtGA0L7QvNGB0LrQsNGPINC-0LHQuy4sIDE1NjkwMQ!3b1!8m2!3d57.4456872!4d41.1570607!16s%2Fm%2F02pstw6!3m5!1s0x414d57f0459c5957:0x1c326cd7a7b83480!8m2!3d57.4361583!4d41.165738!16s%2Fg%2F11bxjmqg9w!5m1!1e1?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" class="footer__link">Магазины</a></li>
+            <li class="footer__item"><a href="https://vk.com/obshchezhitie3" class="footer__link">ЦСО №3</a></li>
+        </ul>
+    </div>
+    <div class="footer__divider"></div> <!-- Полоска -->
+    <div class="footer__bottom">
+        <p class="footer__text">2024, © ESCAPE, <a href='https://mtuci.ru/'>СВЯЗЬ-СВЯЗЬ-СВЯЗЬ</a></p>
+    </div>
+</footer>

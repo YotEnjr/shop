@@ -1,21 +1,41 @@
-
-{% extends "base.html" %}
 {% load static %}
-{% block title %}
-<title> Главная страница </title>
-{% endblock %}
-
-{% block content %}
-  <!-- Тут код страницы -->
-  <h1>что-то</h1>
-  {% for category in category_list %}
-  <ul>
-    <li>{{ category.title }}</li>
-  </ul>
-  {% endfor %}
-  <ul>
-   <li> <a href="{% url 'homepage:catalog' %}">вещи</a></li>
-  </ul>
-  <h1> CAT</h1>
-  <img src="{% static 'img/cat.jpeg' %}" alt="photo">
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Escape</title>
+	<link rel="stylesheet" href="{% static 'src/fonts/font.css' %}"/>
+	<link rel="stylesheet" href="{% static 'style/index.css' %}"/>
+</head>
+<body class="page">
+	<header class="header">
+		<div class="header_logo">
+			<img src="{% static 'images/E_logo.svg' %}" alt="Буква Е" class="logo_image">
+			<div class="header_title_conteiner">
+				<h1 class="header_title">SCAPE</h1>
+				<h1 class="header_title2">CLOTHING STORE</h1>
+			</div>
+		</div>
+		<div class="header_text">Мы — команда амбициозных студентов, стремящихся превратить простую идею в нечто грандиозное. В нашем первом релизе мы стремились отразить суть человеческой природы, его пороков и ценностей.
+			Каждое изделие становится путеводителем к самосознанию и глубокому анализу.
+			Мы — не просто бренд одежды; мы — философия, выраженная через стиль.
+		</div>
+		<div class="clothing_image">
+			<img src="{% static 'images/hoodies_1.svg' %}" alt="худи" class="image">
+			<img src="{% static 'images/pants_1.svg' %}" alt="штаны" class="image">
+			<img src="{% static 'images/t-shirt_1.svg' %}" alt="футболка" class="image">
+		</div>
+	</header>
+	<footer class="footer">
+        <div class="button-container">
+            <p class="text_arrow">К ПОКУПКАМ</p>
+			<a href="{% url 'homepage:main' %}">
+				<button class="image-button">
+					<img src="{% static 'images/arrow_1.svg' %}" alt="Стрелка" class="arrow">
+				</button>
+			</a>
+        </div>
+    </footer>
+</body>
+</html>

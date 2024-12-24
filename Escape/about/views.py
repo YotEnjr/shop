@@ -1,12 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+
 
 def about(request):
     return render(request, 'about/about.html', {})
 
-def contacts(request):
-    return render(request, 'about/contacts.html', {})
+
+def contact(request):
+    return render(request, 'about/contact.html', {})
+
 
 def deliver(request):
-    return render(request, 'about/deliver.html', {})
+    return render(request, 'about/delivery.html', {})
+
+
+def payment(request):
+    return render(request, 'about/payment.html', {})

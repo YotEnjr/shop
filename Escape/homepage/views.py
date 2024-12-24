@@ -16,9 +16,9 @@ def index(request):
     return render(request, template_name, context)
 
 
-@login_required
-def catalog(request):
-    template_name = 'homepage/catalog.html'
+
+def main(request):
+    template_name = 'homepage/main.html'
     # Возьмём нужное. А ненужное не возьмём:
     product_list = Products.objects.values('id', 'title', 'price')
     context = {
@@ -26,16 +26,21 @@ def catalog(request):
     }
     return render(request, template_name, context)
 
-
+@login_required
 def product_detail(request, id, slug):
     product = get_object_or_404(Products,
                                 id=id,
                                 slug=slug,
                                 available=True)
     cart_product_form = CartAddProductForm()
-    return render(request, 'shop/product/detail.html',
+    return render(request, 'cart/detail.html',
                   {'product': product,
                    'cart_product_form': cart_product_form})
+
+
+def snake(request):
+    template_name = 'snake/snake.html'
+    return render(request, template_name, {})
 
 
 # Будет еще одна вьюв функция для вызова странички отдельного товара как по арктиклю

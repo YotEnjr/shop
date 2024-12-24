@@ -1,44 +1,52 @@
 {% load static %}
-<header>
-    <nav class="navbar navbar-light" style="background-color: lightskyblue">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'homepage:index'%}"  target="_self">
-          <img src="{% static 'img/cat.jpeg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-          Escape
-        </a>        
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'homepage:index' %}">
-              Главная
-            </a>
-          </li>
-          <li class="nav-item">              
-            <a class="nav-link" href="{% url 'about:about' %}">
-              О проекте
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about:contacts' %}">
-              Наши контакты
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:basket' %}">
-              BASKET
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:userpage' %}">
-              USERPAGE.LOGO
-            </a>
-          </li>
-            {% if user.is_authenticated %}
-              <li>User: {{ user.get_username }}</li>
-              <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-            {% else %}
-              <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-            {% endif %}
-        </ul>      
+<header class="header">
+  <div class="container">
+      <div class="header__inner">
+          <a href="{% url 'homepage:index' %}" class="logo">
+              <img src="{% static 'images/Group 87.svg' %}" alt="логотип" class="logo_img">
+          </a>
+          <nav class="menu">
+              <ul class="menu__list">
+                  <li class="menu__list-item">
+                      <a href="{% url 'homepage:snake' %}" class="menu__list-link">
+                          <img src="{% static 'images/gaming_tablet.svg' %}" alt="джойстик" class="gaming__tablet">
+                      </a>
+                  </li>
+                  <li class="menu__list-item">
+                      <a href="{% url 'user:basket' %}" class="menu__list-link">
+                          <img src="{% static 'images/cart.svg' %}" alt="корзина" class="cart">
+                      </a>
+                  </li>
+                  {% if user.is_authenticated %}
+                    <li class="menu__list-item">User: {{ user.get_username }}</li>
+                    <li class="menu__list-item"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                  {% else %}
+                    <li class="menu__list-item"><a href="{% url 'login'%}?next={{request.path}}" class="menu__list-link">
+                      <img src="{% static 'images/account.svg' %}" alt="аккаунт" class="account"></a></li>
+                  {% endif %}
+                  </li>
+                  <li class="menu__list-item">
+                      <a href="{% url 'homepage:index'%}" class="menu__list-link menu__tablet">
+                          <img src="{% static 'images/menu.svg' %}" alt="полоски меню">
+                      </a>
+                         
+                  </li>
+              </ul>
+          </nav>
+          
+          <!-- Модальное окно -->
+          <div id="modal" class="modal">
+              <div class="modal-content">
+                  <button class="close" aria-label="Закрыть">&times;</button>
+                  <ul>
+                      <li><a href="{% url 'user:userpage' %}">Личный кабинет</a></li>
+                      <li><a href="{% url 'about:about'%}">О компании</a></li>
+                      <li><a href="{% url 'about:payment'%}">Обмен и возврат</a></li>
+                      <li><a href="{% url 'about:contact'%}">Поддержка</a></li>
+                      <li><a href="{% url 'about:contact'%}">Контакты</a></li>
+                  </ul>
+              </div>
+          </div>
       </div>
-    </nav> 
-  </header>
+  </div>
+</header>
